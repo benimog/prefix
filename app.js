@@ -104,9 +104,38 @@ $(document).ready(function () {
     }
   }
 
+  function prefix(number) {
+    n = parseInt(number.length - 1);
+
+    let output = ` ${digitAsText(number.charAt(0))} `;
+    switch (n) {
+      case 2:
+        output += "hundra";
+        break;
+      case 3:
+        output += "tusen";
+        break;
+      case 6:
+        if (number.charAt(0) === "1") {
+          output += "miljon";
+        } else {
+          output += "miljoner";
+        }
+        break;
+      case 9:
+        if (number.charAt(0) === "1") {
+          output += "miljard";
+        } else {
+          output += "miljarder";
+        }
+        break;
+    }
+    return `${output} `;
+  }
+
   function numberToText() {
     let text = "";
-    let intNumber = parseInt(number);
+    let intNumber;
 
     // loop
     /*     for (let i = 0; i < number.length; ++i) {
@@ -119,7 +148,47 @@ $(document).ready(function () {
     }
  */
 
+    // use modulo
+
+    // number = "1234"
+    // mindre än 21? nej.
+    // lägger "fyra" i stack
+    // ändrar number till "1230"
+    // är 3 === 0? nej.
+    // lägger till "trettio" i stack
+    // ändrar number till "1200"
+    // är 4 === 0? nej.
+    // lägger till "två hundra" i stack
+    // ändrar number till "1000"
+    // är 1 === 0? nej.
+    // lägger till "ett tusen" i stack
+    // poppar stacken till let text -> text = "ett tusen två hundra trettiofyra"
+
+    // text += prefix(number);
+
     if (parseInt(number) < 20) {
+      text = digitAsText(number);
+    } else {
+      let stack = [];
+
+      if (number.charAt(number.length - 1) != 0) {
+        stack.push(digitAsText(number.charAt(number.length - 1)));
+      }
+
+      intNumber = parseInt(number.substring(number.length-2)) - parseInt(number.charAt(number.length - 1));
+      stack.push(tenAsText(intNumber));
+
+      stack.push(prefix(number.substring(1)));
+      stack.push(prefix(number.substring(0)));  
+      
+
+      
+      while (stack.length !== 0) {
+        text += stack.pop();
+      }
+    }
+
+    /* if (parseInt(number) < 20) {
       text = digitAsText(number);
     } else {
       let stack = [];
@@ -133,7 +202,7 @@ $(document).ready(function () {
       while (stack.length !== 0) {
         text += stack.pop();
       }
-    }
+    } */
 
     $("#number-text").html(text);
   }
