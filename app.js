@@ -240,7 +240,15 @@ document.getElementById('number').onkeyup = function () {
         for (let i = x_val + 1; i < y_val; i++)
           str_val += dg_val[n_val[i]] + " ";
       }
-      str_val.replace('ett', 'en');
+
+      str_val = str_val.replace(/ett miljoner/g, 'en miljon');
+      str_val = str_val.replace(/ett miljarder/g, 'en miljard');
+      str_val = str_val.replace(/ett biljoner/g, 'en biljon');
+      str_val = str_val.replace(/ett biljarder/g, 'en biljard');
+      str_val = str_val.replace(/ett triljoner/g, 'en triljard');
+      str_val = str_val.replace(/ett triljarder/g, 'en triljard');
+      str_val = str_val.replace(/ett kvadriljoner/g, 'en kvadriljon');
+
       return str_val.replace(/\s+/g, " ");
     }
 
