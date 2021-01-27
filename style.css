@@ -1,3 +1,27 @@
 body {
-    background-color: slategray;
+  background-color: slategray;
+  font-size: 2em;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#input-field, #input-field:focus {
+    width: 40vw;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: 2px solid slategray;
+}
+
+#input-field:hover, #input-field:focus {
+    outline: none;
+    border: 2px solid tomato;
+}
+
+#copy-button {
+
 }
