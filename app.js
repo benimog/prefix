@@ -8,6 +8,7 @@ $(document).ready(function () {
 
   $("#copy-button").click(function () {
     copyToClipboard();
+    document.getElementById("input-field").focus();
   });
 
   function copyToClipboard() {
