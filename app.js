@@ -140,12 +140,19 @@ $(document).ready(function () {
       str_val = str_val.replace(regex2, `en ${th_val[i]}`) */
     }
     str_val = str_val.replace(/\wen miljon/g, "en miljoner");
+    str_val = str_val.replace(/^en miljoner/g, "en miljon");
     str_val = str_val.replace(/\wen miljard/g, "en miljarder"); 
+    str_val = str_val.replace(/^en miljarder/g, "en miljard"); 
     str_val = str_val.replace(/\wen biljon/g, "en biljoner"); 
+    str_val = str_val.replace(/^en biljoner/g, "en biljon"); 
     str_val = str_val.replace(/\wen biljard/g, "en biljarder"); 
+    str_val = str_val.replace(/^en biljarder/g, "en biljard"); 
     str_val = str_val.replace(/\wen triljon/g, "en triljoner"); 
+    str_val = str_val.replace(/^en triljoner/g, "en triljon"); 
     str_val = str_val.replace(/\wen triljard/g, "en triljarder");
+    str_val = str_val.replace(/^en triljarder/g, "en triljard");
     str_val = str_val.replace(/\wen kvadriljon/g, "en kvadriljoner");  
+    str_val = str_val.replace(/^en kvadriljoner/g, "en kvadriljon");  
 
 
     /*     for (i = 0; i < tw_val.length; ++i) {
