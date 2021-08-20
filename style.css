@@ -9,6 +9,10 @@ body {
   text-align: center;
 }
 
+#copied {
+  visibility: hidden;
+}
+
 #input-field,
 #input-field:focus {
   width: 40vw;

@@ -9,10 +9,15 @@ $(document).ready(function () {
   $("#copy-button").click(function () {
     copyToClipboard();
     document.getElementById("input-field").focus();
+    document.getElementById("copied").style.visibility = "visible";
+    setTimeout(function(){ document.getElementById("copied").style.visibility = "hidden"; }, 1000);
   });
 
   function copyToClipboard() {
     const str = toWordsconver(number);
+    if(str == "Ange ett nummer") {
+      str = "";
+    }
     const el = document.createElement("textarea");
     el.value = str;
     el.setAttribute("readonly", "");
@@ -92,7 +97,7 @@ $(document).ready(function () {
         }
       } else if (n_val[i] != 0) {
         str_val += dg_val[n_val[i]] + " ";
-        if ((x_val - i) % 3 == 0) str_val += "hundra ";
+        if ((x_val - i) % 3 == 0) str_val += "hundra";
         sk_val = 1;
       }
       if ((x_val - i) % 3 == 1) {
